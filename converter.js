@@ -12,12 +12,6 @@ console.log("greetings.")
 // If the temperature is less than 32F/0C the color of the converted temperature should be blue.
 // For any other temperature, the color should be green.
 
-
-
-
-
-
-
 function toCelsius () {
 
 }
