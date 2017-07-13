@@ -6,6 +6,7 @@ let output = document.getElementById("output");
 let converter = document.getElementById("converter");
 let clear = document.getElementById("clear");
 
+
 // defines function toCelsius
 function toCelsius() {
 
@@ -13,8 +14,9 @@ function toCelsius() {
 	let cTemp = (input.value - 32) * (5/9);
 	
 	// calls outputTemp to run and passes in 
-	outputTemp(cTemp, "C&deg;")
+	outputTemp(cTemp, "&deg;C")
 };
+
 
 // defines function toFahrenheit
 function toFahrenheit() {
@@ -23,22 +25,52 @@ function toFahrenheit() {
 	let fTemp = (input.value * (9/5)) + 32
 	
 	// calls outputTemp and passes in fTemp
-	outputTemp(fTemp, "F&deg;")
+	outputTemp(fTemp, "&deg;F")
 };
+
 
 // defines function outputTemp
 function outputTemp(temp, degree) {
-	output.innerHTML = `"${temp}${degree}"`
+
+	// outputs value into the DOM
+	output.innerHTML = `${temp} ${degree}`
 }
 
+
+// defines function colorOutput
+function colors(t, d) {
+	switch(D) {
+		case "f":
+			if (t > 90){
+				output.classList.add("red")
+			} else if (t < 32) {
+				output.classList.add("blue")
+			} else {
+				out.classList.add("green")
+			}
+		[break;]
+
+	}
+}
+
+
 // defines function clearInput
-function clearInput() {
-	// sets the input value to an open string
+function clearEverything() {
+
+	// clears the input value to an empty string
 	input.value = "";
-	// document.getElementById("f").checked = false;
-	// document.getElementById("c").checked = false;
-	// output.innerHTML = "";
+
+	// clears the innerHTML to an empty string
+	output.innerHTML = "";
+	
+	// sets fahrenheit radio btn to fals which unchecks it
+	f.checked = false;
+
+	// sets celsius radoi btn to false which unchecks it
+	c.checked = false;
+	
 };
+
 
 // defines function checkInput
 function checkInput() {
@@ -49,11 +81,11 @@ function checkInput() {
 	}
 };
 
-// This function should determine which conversion should
-// happen based on which radio button is selected.
+// This function should determine which conversion should happen based on which radio button is selected.
 
-// defines function determineConverter and expects clickEvent to be passed in (from line )
-function determineConverter(clickEvent) {
+
+// defines function determineConverter
+function determineConverter() {
 
 	// condition checking to see if c element is checked
 	if (c.checked) {
@@ -75,7 +107,7 @@ function determineConverter(clickEvent) {
 converter.addEventListener("click", checkInput);
 
 // adds an event listener of click to the clear button and runs clearInput
-clear.addEventListener("click", clearInput);
+clear.addEventListener("click", clearEverything);
 
 // adds event listener of keyup to the input and runs the event function
 input.addEventListener("keyup", function(e) {
