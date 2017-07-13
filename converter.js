@@ -1,22 +1,22 @@
 let input = document.getElementById("input");
-let c = document.getElementById("C");
-let f =  document.getElementById("F");
+let c = document.getElementById("c");
+let f =  document.getElementById("f");
 let output = document.getElementById("output");
 let converter = document.getElementById("converter");
 let clear = document.getElementById("clear");
 
-function toCelsius(fTemp) {
+function toCelsius() {
+	console.log("celsius is running");
 	// c = (f - 32) * 5 / 9
-	let cTemp = (fTemp - 32) * (5/9);
-	output.innerHTML = cTemp;
-	return cTemp;
+	// output.innerHTML = c;
+	// return c;
 };
 
-function toFahrenheit(cTemp) {
+function toFahrenheit() {
+	console.log("fahrenehit is running");
 	// f = c * 9 / 5 + 32
-	let fTemp = (cTemp * (9 / 5)) + 32
-	output.innerHTML = fTemp;
-	return fTemp;
+	// output.innerHTML = f;
+	// return f;
 };
 
 function clearInput() {
@@ -27,25 +27,19 @@ function clearInput() {
 };
 
 function checkInput() {
-	console.log("checkInput running")
-	if (input.value) {
-		console.log("input has value")
-	} else {
-		console.log("ERROR")
+	if (input.value && (c.checked || f.checked)) {
+		determineConverter()
 	}
 };
 
 // This function should determine which conversion should
 // happen based on which radio button is selected.
-function determineConverter (clickEvent) {
-  console.log("event", clickEvent)
-
- //  var convTemp = document.getElementById("input").value;
-	// if (document.getElementById("f").checked) {
-	//   toFahrenheit(convTemp);
-	// } else if (document.getElementById("c").checked) {
-	//   toCelsius(convTemp);
-	// }
+function determineConverter (clickEvent) {	
+	if (c.checked) {
+	  toFahrenheit();
+	} else {
+		toCelsius()
+	}
 };
 
 // Assign a function to be executed when the button is clicked
