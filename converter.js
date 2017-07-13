@@ -5,18 +5,18 @@ let output = document.getElementById("output");
 let converter = document.getElementById("converter");
 let clear = document.getElementById("clear");
 
-function toCelsius(fValue) {
-	// °C = (°F - 32) x 5/9
-	let cValue = (fValue - 32) * (5/9);
-	output.innerHTML = cValue;
-	return cValue;
+function toCelsius(fTemp) {
+	// c = (f - 32) * 5 / 9
+	let cTemp = (fTemp - 32) * (5/9);
+	output.innerHTML = cTemp;
+	return cTemp;
 };
 
-function toFahrenheit(cValue) {
-	// °F = °C x 9/5 + 32
-	let fValue = (cValue * (9 / 5)) + 32
-	output.innerHTML = fValue;
-	return fValue;
+function toFahrenheit(cTemp) {
+	// f = c * 9 / 5 + 32
+	let fTemp = (cTemp * (9 / 5)) + 32
+	output.innerHTML = fTemp;
+	return fTemp;
 };
 
 function clearInput() {
@@ -24,9 +24,6 @@ function clearInput() {
 	document.getElementById("f").checked = false;
 	document.getElementById("c").checked = false;
 	output.innerHTML = "";
-	// document.getElementById("F").checked = false;
-	// document.getElementById("C").checked = false;
-	// output.innerHTML = "";
 	
 };
 
@@ -34,11 +31,11 @@ function clearInput() {
 // happen based on which radio button is selected.
 function determineConverter (clickEvent) {
   console.log("event", clickEvent)
-  var toConvert = document.getElementById("input").value;
+  var convTemp = document.getElementById("input").value;
 	if (document.getElementById("f").checked) {
-	  toFahrenheit(toConvert);
+	  toFahrenheit(convTemp);
 	} else if (document.getElementById("c").checked) {
-	  toCelsius(toConvert);
+	  toCelsius(convTemp);
 	}
 };
 
