@@ -21,30 +21,39 @@ function toFahrenheit(cTemp) {
 
 function clearInput() {
 	input.value = "";
-	document.getElementById("f").checked = false;
-	document.getElementById("c").checked = false;
-	output.innerHTML = "";
-	
+	// document.getElementById("f").checked = false;
+	// document.getElementById("c").checked = false;
+	// output.innerHTML = "";
+};
+
+function checkInput() {
+	console.log("checkInput running")
+	if (input.value) {
+		console.log("input has value")
+	} else {
+		console.log("ERROR")
+	}
 };
 
 // This function should determine which conversion should
 // happen based on which radio button is selected.
 function determineConverter (clickEvent) {
   console.log("event", clickEvent)
-  var convTemp = document.getElementById("input").value;
-	if (document.getElementById("f").checked) {
-	  toFahrenheit(convTemp);
-	} else if (document.getElementById("c").checked) {
-	  toCelsius(convTemp);
-	}
+
+ //  var convTemp = document.getElementById("input").value;
+	// if (document.getElementById("f").checked) {
+	//   toFahrenheit(convTemp);
+	// } else if (document.getElementById("c").checked) {
+	//   toCelsius(convTemp);
+	// }
 };
 
 // Assign a function to be executed when the button is clicked
-converter.addEventListener("click", determineConverter);
+converter.addEventListener("click", checkInput);
 clear.addEventListener("click", clearInput);
 input.addEventListener("keyup", function(e) {
 	if (e.keyCode === 13) {
-		determineConverter()
+		checkInput()
 	}
 });
 
